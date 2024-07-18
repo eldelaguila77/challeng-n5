@@ -1,0 +1,26 @@
+/* Sidebar.css */
+.sidebar-container {
+    width: 200px;
+    height: 100vh;
+    background: #f0f0f0;
+    padding-top: 5%;
+    box-sizing: border-box;
+  }
+  
+  .nav-item {
+    margin-bottom: 10px;
+  }
+  
+  .nav-link {
+    display: flex;
+    align-items: center;
+    color: #333; /* Cambia el color según tus preferencias */
+  }
+  
+  .nav-link:hover {
+    color: #007bff; /* Cambia el color de hover según tus preferencias */
+  }
+  
+  .nav-icon {
+    margin-right: 10px;
+  }
