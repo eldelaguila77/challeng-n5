@@ -1,0 +1,9 @@
+#Node
+node_modules
+__pycache__/
+#python
+__pycache__/
+env/
+#mysql
+mysql-data/
+

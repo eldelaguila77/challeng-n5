@@ -1,0 +1,40 @@
+version: '3.9'
+services:
+  backend_n5:
+    build:
+      context: .
+      dockerfile: backend_n5.Dockerfile
+    volumes:
+      - ./backend_n5:/app
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
+
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'n5'
+      MYSQL_USER: 'n5_user'
+      MYSQL_PASSWORD: 'n5_password'
+      MYSQL_ROOT_PASSWORD: 'root_password'
+    ports:
+      - "3308:3306"
+    volumes:
+      - ./mysql-data:/var/lib/mysql
+      - ./init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
+
+
+  backoffice:
+    build:
+      context: .
+      dockerfile: backoffice.Dockerfile
+    volumes:
+      - ./backoffice:/app
+      - /app/node_modules
+    ports:
+      - "3000:3000"
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+      - NODE_ENV=development
