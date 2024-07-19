@@ -6,7 +6,7 @@ WORKDIR /app
 COPY ./backoffice /app
 
 # Copia el package.json y el package-lock.json para instalar las dependencias
-COPY backoffice/package*.json ./
+#COPY backoffice/package*.json ./
 
 # Instala las dependencias del proyecto
 RUN npm install
