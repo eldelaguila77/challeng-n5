@@ -20,7 +20,7 @@ class TicketController:
     def get_ticket(self, id):
         try:
             cursor = self.connection.connection.cursor()
-            sql = f"SELECT * FROM ticket WHERE id = {id}"
+            sql = f"SELECT * FROM vehicle_ticket WHERE id = {id}"
             cursor.execute(sql)
             ticket = cursor.fetchone()
             if ticket:
@@ -89,7 +89,7 @@ class TicketController:
             cursor = self.connection.connection.cursor()
             sql = """
             SELECT vt.id, vt.ticket_date, vt.comments,
-                   v.id AS vehicle_id, v.license_plate, v.model, v.year,
+                   v.id AS vehicle_id, v.plate, v.brand, v.color,
                    p.id AS person_id, p.name, p.email
             FROM vehicle_ticket vt
             JOIN vehicle v ON vt.vehicleId = v.id
@@ -108,9 +108,9 @@ class TicketController:
                     },
                     'vehicle': {
                         'id': row[3],
-                        'license_plate': row[4],
-                        'model': row[5],
-                        'year': row[6]
+                        'plate': row[4],
+                        'brand': row[5],
+                        'color': row[6]
                     },
                     'person': {
                         'id': row[7],

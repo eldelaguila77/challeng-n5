@@ -110,6 +110,10 @@ def setup_routes(app, connection):
     def get_ticket(id):
         return ticket_controller.get_ticket(id)
     
+    @app.route('/generate-report/<string:email>', methods=['GET'])
+    def generate_report(email):
+        return ticket_controller.get_tikets_by_email(email)
+    
     @app.route('/ticket/<int:id>', methods=['PUT'])
     def update_ticket(id):
         ticket_data = request.json
